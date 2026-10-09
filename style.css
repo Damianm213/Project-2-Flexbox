@@ -89,11 +89,6 @@ div img {
         flex: 0 0 44%;
     }
 
-    /* Stack the third row */
-    .row-three .col-1,
-    .row-three .col-3 {
-        flex-basis: 92%;
-    }
 
     /* Keep the fourth row as one wide box */
     .col-4 {

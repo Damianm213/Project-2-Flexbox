@@ -1,5 +1,4 @@
 
-
 /* Set up the page so the sizes work properly */
 html {
     box-sizing: border-box;
@@ -48,7 +47,7 @@ div img {
     flex: 0 0 92%;
 }
 
-/* Give the first two types of boxes their colors */
+/* Give the boxes their colors */
 .col-1 {
     background-color: #A3CDD9;
 }
@@ -57,7 +56,6 @@ div img {
     background-color: #FFFCE6;
 }
 
-/* Set the colors for the new boxes */
 .col-3 {
     background-color: #A3CDD9;
 }
@@ -66,10 +64,10 @@ div img {
     background-color: #C2B8AC;
 }
 
-/* Make the last row use flexible boxes */
+/* Set up the last row */
 .col-six {
     margin-left: 4%;
-    flex: 1 1 28%;
+    flex: 0 0 92%;
     background-color: #D9E8D5;
 }
 
@@ -80,9 +78,10 @@ div img {
     order: 0;
 }
 
-/* Change the layout when the screen gets bigger */
+/* Tablet layout */
 @media only screen and (min-width: 480px) {
 
+    /* Show two boxes per line */
     .col-1,
     .col-2,
     .col-3,
@@ -90,13 +89,13 @@ div img {
         flex: 0 0 44%;
     }
 
-    /* Stack the two boxes in the third row */
+    /* Stack the third row */
     .row-three .col-1,
     .row-three .col-3 {
         flex-basis: 92%;
     }
 
-    /* Make the fourth row one big box */
+    /* Keep the fourth row as one wide box */
     .col-4 {
         flex-basis: 92%;
     }
@@ -119,7 +118,7 @@ div img {
     }
 }
 
-/* Change the layout for desktop screens */
+/* Desktop layout */
 @media only screen and (min-width: 768px) {
 
     /* Make the regular boxes smaller */
@@ -132,7 +131,11 @@ div img {
         flex: 0 0 44%;
     }
 
-    /* Make the third row have one small and one big box */
+    /* Put the third row side by side */
+    .row-three .col-1 {
+        flex: 0 0 20%;
+    }
+
     .row-three .col-3 {
         flex: 0 0 68%;
     }
@@ -158,8 +161,8 @@ div img {
         order: 0;
     }
 
-    /* Let the three boxes share the space in the last row */
+    /* Fit three boxes across in the last row */
     .row-six .col-six {
-        flex: 1 1 28%;
+        flex: 0 0 28%;
     }
 }

@@ -1,85 +1,165 @@
-/* Border box declaration 
-https://www.paulirish.com/2012/box-sizing-border-box-ftw/ */
+
+
+/* Set up the page so the sizes work properly */
 html {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
-/* inherit border-box on all elements in the universe and before and after
- */
-*, 
-*:before, 
+
+*,
+*:before,
 *:after {
-  box-sizing: inherit;
+    box-sizing: inherit;
 }
 
+/* Set the basic page styles */
 body {
-	font-family: Arial, Geneva, sans-serif;
+    font-family: Arial, Geneva, sans-serif;
+    margin: 0;
 }
+
 a {
-	color: #2772B0;
+    color: #2772B0;
 }
+
+/* Keep the content centered on the page */
 .wrapper {
-	width: 97%;
-	max-width: 1200px;
-	margin: 0 auto;
-	float: none;
-	background-color: #fff;
+    width: 97%;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: #fff;
 }
 
+/* Make the pictures fit inside their boxes */
 div img {
-	width: 100%;
-	max-width: 225px; 
+    width: 100%;
+    max-width: 225px;
+    height: auto;
 }
 
-/* grid system -- mobile first! */
-/* flex contatiner */
-
+/* Make each row use flexbox */
 .row {
-	display: flex;
-	flex-flow: row wrap;
+    display: flex;
+    flex-flow: row wrap;
 }
 
-/* attribute selector to give some margin between columns and apply styles to flex items */
-
+/* Set the size and spacing of the boxes on mobile */
 [class*="col-"] {
-	margin-left: 4%;
-	flex: 0 0 92%;
+    margin-left: 4%;
+    flex: 0 0 92%;
 }
 
-/* Add background colors to see how much space each column is taking */
-
+/* Give the first two types of boxes their colors */
 .col-1 {
-	background-color: #A3CDD9;
+    background-color: #A3CDD9;
 }
 
 .col-2 {
-	background-color: #FFFCE6;
+    background-color: #FFFCE6;
 }
 
-/* Tablet Landscape Screen Sizes */
-@media only screen and (min-width: 480px)  {
-	
-  .col-1,
-  .col-2 {
-		flex: 0 0 44%;
-	}
-  
-  
-
-
-
+/* Set the colors for the new boxes */
+.col-3 {
+    background-color: #A3CDD9;
 }
-/* Desktop screen Sizes */
+
+.col-4 {
+    background-color: #C2B8AC;
+}
+
+/* Make the last row use flexible boxes */
+.col-six {
+    margin-left: 4%;
+    flex: 1 1 28%;
+    background-color: #D9E8D5;
+}
+
+/* Keep the fifth row in its normal order on mobile */
+.rambo,
+.remy,
+.zeke {
+    order: 0;
+}
+
+/* Change the layout when the screen gets bigger */
+@media only screen and (min-width: 480px) {
+
+    .col-1,
+    .col-2,
+    .col-3,
+    .col-4 {
+        flex: 0 0 44%;
+    }
+
+    /* Stack the two boxes in the third row */
+    .row-three .col-1,
+    .row-three .col-3 {
+        flex-basis: 92%;
+    }
+
+    /* Make the fourth row one big box */
+    .col-4 {
+        flex-basis: 92%;
+    }
+
+    /* Put Remy first on tablets */
+    .rambo,
+    .zeke {
+        flex: 0 0 44%;
+        order: 0;
+    }
+
+    .remy {
+        flex: 0 0 92%;
+        order: -1;
+    }
+
+    /* Show two boxes per line in the last row */
+    .row-six .col-six {
+        flex: 0 0 44%;
+    }
+}
+
+/* Change the layout for desktop screens */
 @media only screen and (min-width: 768px) {
-  
-  
- 	.col-1 {
-		flex: 0 0 20%;
-	}
-  
-  
-  
-	.col-2 {
-		flex: 0 0 44%;
-	}
 
+    /* Make the regular boxes smaller */
+    .col-1 {
+        flex: 0 0 20%;
+    }
+
+    /* Make the wider boxes take up more space */
+    .col-2 {
+        flex: 0 0 44%;
+    }
+
+    /* Make the third row have one small and one big box */
+    .row-three .col-3 {
+        flex: 0 0 68%;
+    }
+
+    /* Make the fourth row one big box */
+    .col-4 {
+        flex: 0 0 92%;
+    }
+
+    /* Put the fifth row back in its original order */
+    .rambo {
+        flex: 0 0 20%;
+        order: 0;
+    }
+
+    .remy {
+        flex: 0 0 44%;
+        order: 0;
+    }
+
+    .zeke {
+        flex: 0 0 20%;
+        order: 0;
+    }
+
+    /* Let the three boxes share the space in the last row */
+    .row-six .col-six {
+        flex: 1 1 28%;
+    }
 }
